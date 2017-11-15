@@ -24,7 +24,9 @@ Matrix::Matrix(Matrix &matrixToCopy) {
 
     for (int i = 0; i < m; i++) {
         structure[i] = new int[n];
-        memcpy(structure[i], matrixToCopy.structure[i], n * sizeof(int));
+        for (int j = 0; j < n; j++){
+            structure[i][j] = matrixToCopy.structure[i][j];
+        }
     }
 }
 
@@ -84,7 +86,9 @@ void Matrix::makeEmpty() {
 
     for (int i = 0; i < m; i++) {
         structure[i] = new int[n];
-        memset(structure[i], 0, n * sizeof(int));
+        for (int j = 0; j < n; j++) {
+            structure[i][j] = 0;
+        }
     }
 }
 
