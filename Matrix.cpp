@@ -49,10 +49,12 @@ Matrix::~Matrix() {
 }
 
 void Matrix::setValue(unsigned int row, unsigned int column, int value) {
+    validate(row, column);
     structure[row][column] = value;
 }
 
 int Matrix::getValue(unsigned int row, unsigned int column) {
+    validate(row, column);
     return structure[row][column];
 }
 
@@ -85,7 +87,7 @@ Matrix Matrix::multiply(int scalar) {
 Matrix Matrix::multiply(Matrix otherMatrix) {
     if (this->getColumns() != otherMatrix.getRows()) {
         throw std::invalid_argument
-                ("Matrix dimensions do not match; fo A x B, A' columns count must match B' rows count");
+                ("Matrix dimensions do not match; for A x B, A's columns count must match B's rows count");
     }
     Matrix result(this->getRows(),otherMatrix.getColumns());
 
@@ -117,5 +119,14 @@ void Matrix::makeEmpty() {
         for (int j = 0; j < n; j++) {
             structure[i][j] = 0;
         }
+    }
+}
+
+void Matrix::validate(unsigned int row, unsigned int column){
+    if (row < 0 || row >= this->m) {
+        throw std::out_of_range("Row value exceeds matrix dimensions");
+    }
+    if (column < 0 || column >= this->n) {
+        throw std::out_of_range("Column value exceeds matrix dimensions");
     }
 }

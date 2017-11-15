@@ -67,10 +67,39 @@ int main() {
     Matrix m8 = m6.multiply(m7);
 
     m6.print();
-    std::cout<<"X"<<std::endl;
+    std::cout << "X" << std::endl;
     m7.print();
-    std::cout<<"="<<std::endl;
+    std::cout << "=" << std::endl;
     m8.print();
+    std::cout << std::endl;
+
+    try {
+        m8.getValue(3,0);
+    } catch (std::out_of_range& e){
+        std::cout << e.what() << std::endl;
+        std::cout << "Row validation works\n" << std::endl;
+    }
+
+    try {
+        m8.getValue(0,3);
+    } catch (std::out_of_range& e){
+        std::cout << e.what() << std::endl;
+        std::cout << "Column validation works\n" << std::endl;
+    }
+
+    try {
+        m6.multiply(m6);
+    } catch (std::invalid_argument& e){
+        std::cout << e.what() << std::endl;
+        std::cout << "Matrix multiplication validation works\n" << std::endl;
+    }
+
+    try {
+        m6.add(m7);
+    } catch (std::invalid_argument& e){
+        std::cout << e.what() << std::endl;
+        std::cout << "Matrix addition validation works\n" << std::endl;
+    }
 
     return 0;
 }

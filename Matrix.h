@@ -8,6 +8,7 @@ private:
     unsigned int n;
     int **structure;
     void makeEmpty();
+    void validate(unsigned int row, unsigned int column);
 public:
     Matrix();
     Matrix(unsigned int rows, unsigned int columns);
