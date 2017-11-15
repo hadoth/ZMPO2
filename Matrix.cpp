@@ -72,6 +72,34 @@ Matrix Matrix::add(Matrix matrixToAdd) {
     return result;
 }
 
+Matrix Matrix::multiply(int scalar) {
+    Matrix result(*this);
+    for (int i = 0; i < result.m; i++) {
+        for (int j = 0; j < result.n; j++) {
+            result.structure[i][j] *= scalar;
+        }
+    }
+    return result;
+}
+
+Matrix Matrix::multiply(Matrix otherMatrix) {
+    if (this->getColumns() != otherMatrix.getRows()) {
+        throw std::invalid_argument
+                ("Matrix dimensions do not match; fo A x B, A' columns count must match B' rows count");
+    }
+    Matrix result(this->getRows(),otherMatrix.getColumns());
+
+    for (int i = 0; i < result.m; i++) {
+        for (int j = 0; j < result.n; j++) {
+            for (int r = 0; r < otherMatrix.m; r++) {
+                result.structure[i][j] += this->structure[i][r] * otherMatrix.structure[r][j];
+            }
+        }
+    }
+
+    return result;
+}
+
 void Matrix::print() {
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
@@ -90,14 +118,4 @@ void Matrix::makeEmpty() {
             structure[i][j] = 0;
         }
     }
-}
-
-Matrix Matrix::multiply(int scalar) {
-    Matrix result(*this);
-    for (int i = 0; i < result.m; i++) {
-        for (int j = 0; j < result.n; j++) {
-            result.structure[i][j] *= scalar;
-        }
-    }
-    return result;
 }

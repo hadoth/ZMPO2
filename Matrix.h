@@ -16,10 +16,11 @@ public:
     ~Matrix();
     Matrix add(Matrix matrixToAdd);
     Matrix multiply(int scalar);
+    Matrix multiply(Matrix matrix);
     void setValue(unsigned int row, unsigned int column, int value);
     int getValue(unsigned int row, unsigned int column);
-    inline int getRows() { return m;}
-    inline int getColumns() { return n;}
+    inline unsigned int getRows() { return m;}
+    inline unsigned int getColumns() { return n;}
     void print();
 };
 

@@ -46,5 +46,31 @@ int main() {
     m4.print();
     std::cout << std::endl;
 
+    //Example from https://pl.wikipedia.org/wiki/Mnożenie_macierzy
+    Matrix m6(2,3);
+    Matrix m7(3,2);
+
+    m6.setValue(0,0,1);
+    m6.setValue(0,1,0);
+    m6.setValue(0,2,2);
+    m6.setValue(1,0,-1);
+    m6.setValue(1,1,3);
+    m6.setValue(1,2,1);
+
+    m7.setValue(0,0,3);
+    m7.setValue(0,1,1);
+    m7.setValue(1,0,2);
+    m7.setValue(1,1,1);
+    m7.setValue(2,0,1);
+    m7.setValue(2,1,0);
+
+    Matrix m8 = m6.multiply(m7);
+
+    m6.print();
+    std::cout<<"X"<<std::endl;
+    m7.print();
+    std::cout<<"="<<std::endl;
+    m8.print();
+
     return 0;
 }
