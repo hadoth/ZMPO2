@@ -24,7 +24,7 @@ Matrix::Matrix(Matrix &matrixToCopy) {
 
     for (int i = 0; i < m; i++) {
         structure[i] = new int[n];
-        for (int j = 0; j < n; j++){
+        for (int j = 0; j < n; j++) {
             structure[i][j] = matrixToCopy.structure[i][j];
         }
     }
@@ -73,8 +73,8 @@ Matrix Matrix::add(Matrix matrixToAdd) {
 }
 
 void Matrix::print() {
-    for (int i = 0; i < m; i++){
-        for (int j = 0; j < n; j++){
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
             std::cout << "[" << structure[i][j] << "]";
         }
         std::cout << std::endl;
@@ -92,8 +92,12 @@ void Matrix::makeEmpty() {
     }
 }
 
-
-
-
-
-
+Matrix Matrix::multiply(int scalar) {
+    Matrix result(*this);
+    for (int i = 0; i < result.m; i++) {
+        for (int j = 0; j < result.n; j++) {
+            result.structure[i][j] *= scalar;
+        }
+    }
+    return result;
+}

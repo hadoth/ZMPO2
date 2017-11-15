@@ -15,6 +15,7 @@ public:
     Matrix(Matrix &&matrixToMove);
     ~Matrix();
     Matrix add(Matrix matrixToAdd);
+    Matrix multiply(int scalar);
     void setValue(unsigned int row, unsigned int column, int value);
     int getValue(unsigned int row, unsigned int column);
     inline int getRows() { return m;}

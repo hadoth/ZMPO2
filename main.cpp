@@ -37,5 +37,14 @@ int main() {
     std::cout << m4.getValue(0,1) << std::endl;
     std::cout << "m4: " << m4.getColumns() << " x " << m4.getRows() << std::endl;
 
+    std::cout << std::endl;
+    m4.print();
+    std::cout << std::endl;
+    Matrix m5 = m4.multiply(3);
+    m5.print();
+    std::cout << std::endl;
+    m4.print();
+    std::cout << std::endl;
+
     return 0;
 }
