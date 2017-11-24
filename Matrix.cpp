@@ -22,9 +22,11 @@ Matrix::Matrix(unsigned int rows, unsigned int columns) {
  * Konstruktor ten tworzy niezależną kopię oryginalnego obiektu. Jest wykorzystywany wszędzie tam gdzie
  * niezbędne jest utworzenie identycznego, nieodróżnialnego obiektu, a nie jest dla użytkownika istotne, czy
  * istnieje więcej niż jedna instancja danego obiektu. Wszelkie zdefiniowane dla danego obiektu funkcje i operatory
- * porównujące (equals, comparator, "=") powinny traktować oryginał i kopię obiektu jako tożsame. Ponadto, żadna ze zmian
+ * porównujące (equals, comparator, "==") powinny traktować oryginał i kopię obiektu jako tożsame. Ponadto, żadna ze zmian
  * dokonanych na oryginale nie powinna wpływać na kopię i odwrotnie, żadna ze zmian dokonanych na kopii nie powinna
  * wpływać na oryginał.
+ * Jeżeli nie został przeciążony operator "=" i został zdefiniowany konstruktor kopiujący, to wywołanie "Matrix a = b"
+ * będzie skutkować wywołaniem konstruktora kopiującego tworzącego obiekt b będący kopią obiektu a.
  *
  * @param matrixToCopy
  */
